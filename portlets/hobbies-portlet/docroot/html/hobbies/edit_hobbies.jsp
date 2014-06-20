@@ -4,7 +4,7 @@
 
 <portlet:actionURL name="addUserHobbies" var="addUserHobbiesURL" windowState="normal" />
 
-<liferay-ui:header backURL="<%= viewUserHobbiesURL %>" title='hobbies' />
+<liferay-ui:header backURL="<%= viewUserHobbiesURL %>" title='hobbies.title.hobbies' />
 
 <aui:form action="<%= addUserHobbiesURL %>" method="POST" name="fm">
 	
@@ -13,7 +13,7 @@
 	        className="<%= User.class.getName() %>"
 	        classPK="<%= user.getUserId() %>"
 	        editable="<%= true %>"
-	        label="hobbies-list"
+	        label="hobbies.label.hobbies-list"
 	        name="<%= HobbiesPortlet.USER_HOBBIES_EXPANDO_FIELD  %>"
 		/>
 	</aui:fieldset>

@@ -22,6 +22,9 @@ import javax.portlet.PortletException;
  */
 public class HobbiesPortlet extends MVCPortlet {
 
+    public static final String MVC_PATH = "mvcPath";
+    public static final String REDIRECT = "redirect";
+    public static final String EDIT_TODO_PATH = "/html/hobbies/edit_hobbies.jsp";
     public static final String USER_HOBBIES_EXPANDO_FIELD = "hobbies";
     public static final String HOBBIES_UPDATE_ERROR = "hobbies-update-error";
     public static final String HOBBIES_UPDATE_SUCCESS = "hobbies-updated";
@@ -34,10 +37,10 @@ public class HobbiesPortlet extends MVCPortlet {
         User user = themeDisplay.getUser();
 
         try {
-            
-            ServiceContext serviceContext =  ServiceContextFactory.getInstance(User.class.getName(), request);           
+
+            ServiceContext serviceContext = ServiceContextFactory.getInstance(User.class.getName(), request);
             user.setExpandoBridgeAttributes(serviceContext);
-            
+
             log.debug("hobbies added: " + user.getExpandoBridge().getAttribute(USER_HOBBIES_EXPANDO_FIELD));
 
             SessionMessages.add(request, HOBBIES_UPDATE_SUCCESS);

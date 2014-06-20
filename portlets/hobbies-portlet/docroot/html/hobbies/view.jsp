@@ -5,23 +5,31 @@
 %>
 
 <portlet:renderURL var="editHobbiesURL">
-	<portlet:param name="mvcPath" value="/html/hobbies/edit_hobbies.jsp" />
-	<portlet:param name="redirect" value="<%= redirect %>" />
+	<portlet:param name="<%= HobbiesPortlet.MVC_PATH %>" value="<%=HobbiesPortlet.EDIT_TODO_PATH %>" />
+	<portlet:param name="<%= HobbiesPortlet.REDIRECT %>" value="<%= redirect %>" />
 </portlet:renderURL>
 
-<liferay-ui:header title='hobbies' />
+<liferay-ui:header title='hobbies.title.hobbies' />
 
-<liferay-ui:error key="<%= HobbiesPortlet.HOBBIES_UPDATE_ERROR %>" message="hobbies-not-updated" />
-<liferay-ui:success key="<%= HobbiesPortlet.HOBBIES_UPDATE_SUCCESS %>" message="hobbies-updated-successfully" />
+<liferay-ui:error key="<%= HobbiesPortlet.HOBBIES_UPDATE_ERROR %>" message="hobbies.error.hobbies-not-updated" />
+<liferay-ui:success key="<%= HobbiesPortlet.HOBBIES_UPDATE_SUCCESS %>" message="hobbies.message.hobbies-updated-successfully" />
 
-<liferay-ui:message key="my-hobbies-message" />
+<aui:layout>
 
-<liferay-ui:custom-attribute
-        className="<%= User.class.getName() %>"
-        classPK="<%= user.getUserId() %>"
-        editable="<%= false %>"
-        label="my-hobbies"
-        name="<%= HobbiesPortlet.USER_HOBBIES_EXPANDO_FIELD  %>"
-/>
+	<aui:column columnWidth="50" first="true"> 
+		<liferay-ui:message key="hobbies.label.my-hobbies-list" />
+	</aui:column>
+	
+	<aui:column columnWidth="50" last="true" cssClass="hobbies-list"> 
+		<liferay-ui:custom-attribute
+		        className="<%= User.class.getName() %>"
+		        classPK="<%= user.getUserId() %>"
+		        editable="<%= false %>"
+		        label="hobbies.label.my-hobbies"
+		        name="<%= HobbiesPortlet.USER_HOBBIES_EXPANDO_FIELD  %>"
+		/>
+	</aui:column>
+	
+</aui:layout>
 
-<aui:button value="edit-hobbies" onClick="<%= editHobbiesURL.toString() %>" />
+<aui:button value="hobbies.button.edit-hobbies" onClick="<%= editHobbiesURL.toString() %>" />
