@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.1.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_1_0.dtd">
+<service-builder package-path="com.rivetlogic.training.todo">
+	<author>rivetlogic</author>
+	<namespace>training</namespace>
+
+	<entity name="Todo" local-service="true" remote-service="true">
+
+		<!-- PK fields -->
+
+		<column name="todoId" type="long" primary="true" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="groupId" type="long" />
+		<column name="userId" type="long" />
+		<column name="taskDescription" type="String" />
+		<column name="finished" type="boolean" />
+		<column name="createdDate" type="Date" />
+		<column name="finishedDate" type="Date" />
+
+		<!-- Order -->
+
+		<order by="desc">
+			<order-column name="createdDate" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="CompanyId_GroupId_UserId" return-type="Collection">
+			<finder-column name="companyId" />
+			<finder-column name="groupId" />
+			<finder-column name="userId" />
+		</finder>
+		
+	</entity>
+</service-builder>
